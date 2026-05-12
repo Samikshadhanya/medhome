@@ -53,8 +53,8 @@ export default function ReportsPage() {
           <div className="bg-white border border-slate-200 rounded-lg p-5">
             <h2 className="font-bold text-slate-900 mb-4">Attention list</h2>
             <div className="space-y-3">
-              {[...lowStockMedicines, ...expiringMedicines].map((medicine) => (
-                <div key={`${medicine.id}-report`} className="flex items-center justify-between border-b border-slate-100 pb-3">
+              {[...lowStockMedicines, ...expiringMedicines].map((medicine, index) => (
+                <div key={`${medicine.id}-${index}`} className="flex items-center justify-between border-b border-slate-100 pb-3">
                   <div>
                     <p className="font-medium text-slate-900">{medicine.name}</p>
                     <p className="text-sm text-slate-500">{medicine.quantity} {medicine.unit} left - expires {medicine.expiryDate}</p>
