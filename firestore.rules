@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if document belongs to user's household
+    function isOwnHousehold(householdId) {
+      return isAuthenticated() && request.auth.uid == get(/databases/$(database)/documents/users/$(request.auth.uid)).data.householdId;
+    }
+
+    // Users collection - only authenticated users can read/write their own doc
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Medicines collection - authenticated users can CRUD
+    match /medicines/{medicineId} {
+      allow read, write: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Members collection - authenticated users can CRUD
+    match /members/{memberId} {
+      allow read, write: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Reminders collection - authenticated users can CRUD
+    match /reminders/{reminderId} {
+      allow read, write: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Caregivers collection - authenticated users can CRUD
+    match /caregivers/{caregiverId} {
+      allow read, write: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+  }
+}
