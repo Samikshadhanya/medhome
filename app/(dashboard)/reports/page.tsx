@@ -1,7 +1,6 @@
 'use client';
 
 import { ChevronLeft } from 'lucide-react';
-import DashboardLayout from '@/components/dashboard-layout';
 import { useAppStore } from '@/lib/app-store';
 
 export default function ReportsPage() {
@@ -10,7 +9,7 @@ export default function ReportsPage() {
   const adherence = todayReminders.length ? Math.round((taken / todayReminders.length) * 100) : 0;
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 md:p-6 space-y-6">
         <div className="flex items-center gap-4">
           <button onClick={() => window.history.back()} className="p-2 hover:bg-slate-100 rounded-lg transition">
@@ -66,7 +65,7 @@ export default function ReportsPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }
 

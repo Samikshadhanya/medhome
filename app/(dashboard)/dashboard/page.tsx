@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { AlertTriangle, Bell, Calendar, Copy, Package } from 'lucide-react';
-import DashboardLayout from '@/components/dashboard-layout';
 import UpcomingEvents from '@/components/upcoming-events';
 import { useAppStore } from '@/lib/app-store';
 
@@ -17,7 +16,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 md:p-6 space-y-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Today at a glance</h1>
@@ -85,6 +84,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

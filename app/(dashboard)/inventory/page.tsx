@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { ChevronLeft, ExternalLink, Plus, Search } from 'lucide-react';
-import DashboardLayout from '@/components/dashboard-layout';
 import MedicineTable from '@/components/medicine-table';
 import { Button } from '@/components/ui/button';
 import { useAppStore } from '@/lib/app-store';
@@ -55,7 +54,7 @@ export default function InventoryPage() {
   };
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 md:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -164,7 +163,7 @@ export default function InventoryPage() {
 
         <MedicineTable medicines={medicines} showDelete />
       </div>
-    </DashboardLayout>
+    </>
   );
 }
 

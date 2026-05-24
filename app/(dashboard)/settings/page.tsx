@@ -1,14 +1,13 @@
 'use client';
 
 import { ChevronLeft, ShieldCheck } from 'lucide-react';
-import DashboardLayout from '@/components/dashboard-layout';
 import { useAppStore } from '@/lib/app-store';
 
 export default function SettingsPage() {
   const { user } = useAppStore();
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 md:p-6 space-y-6">
         <div className="flex items-center gap-4">
           <button onClick={() => window.history.back()} className="p-2 hover:bg-slate-100 rounded-lg transition">
@@ -36,7 +35,7 @@ export default function SettingsPage() {
           </section>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }
 
